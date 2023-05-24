@@ -147,7 +147,7 @@
 <div class="popup-overlay">
     <div class="popup-content">
         <span class="popup-close" onclick="closePopup()">&times;</span>
-        <video class="popup-video" autoplay controls>
+        <video class="popup-video" muted="muted" autoplay controls>
             <source src="fiestaSaid.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
@@ -155,6 +155,20 @@
 </div>
 
 <script>
+
+    var video = document.querySelector('.popup-video');
+
+    // Evento 'loadedmetadata': Se dispara cuando los metadatos del video están disponibles
+    video.addEventListener('loadedmetadata', function() {
+        video.play();
+    });
+
+    // Evento 'ended': Se dispara cuando el video ha terminado de reproducirse
+    video.addEventListener('ended', function() {
+        closePopup();
+    });
+
+
     // Función para abrir el popup al cargar la página
     window.onload = function() {
         openPopup();
@@ -163,6 +177,10 @@
     // Función para abrir el popup
     function openPopup() {
         document.querySelector('.popup-overlay').style.display = 'flex';
+        var video = document.querySelector('.popup-video');
+        video.play();
+        
+
     }
 
     // Función para cerrar el popup
