@@ -77,7 +77,7 @@
             width: 80%;
             max-width: 800px;
             padding: 20px;
-            background-color: #fff;
+            background-color: black;
             border-radius: 5px;
             text-align: center;
         }
@@ -92,8 +92,20 @@
         }
 
         .popup-video {
-            width: 100%;
+            width: 93%;
             height: auto;
+        }
+
+        .fancy-button {
+            background-color: #dd0b0b; /* Green */
+            color: #F3E8E8FF;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .fancy-button:hover {
+            background-color: #3D9970; /* Darker green */
         }
     </style>
 </head>
@@ -147,11 +159,13 @@
 <div class="popup-overlay">
     <div class="popup-content">
         <span class="popup-close" onclick="closePopup()">&times;</span>
-        <video class="popup-video" muted="muted" autoplay controls>
+        <video class="popup-video" autoplay controls>
             <source src="fiestaSaid.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
-        <p class="text-celeste text-center" style="font-size: 48px;color: #dc1821" >Ajusta el volumen del video para escucharlo y ciérralo haciendo clic en la esquina superior derecha.</p>
+        <button id="replayButton" class="fancy-button" style=" font-family: 'Grinched';font-size: 50px" onclick="reproducir()" >
+            Reproducir Video SorpresA!!!
+        </button>
     </div>
 </div>
 
@@ -160,7 +174,7 @@
     var video = document.querySelector('.popup-video');
 
     // Evento 'loadedmetadata': Se dispara cuando los metadatos del video están disponibles
-    video.addEventListener('loadedmetadata', function() {
+    video.addEventListener('loadedmetadata', function () {
         video.play();
     });
 
@@ -175,11 +189,15 @@
         openPopup();
     }
 
+    function reproducir() {
+        var video = document.querySelector('.popup-video');
+        video.play();
+    }
+
     // Función para abrir el popup
     function openPopup() {
         document.querySelector('.popup-overlay').style.display = 'flex';
-        var video = document.querySelector('.popup-video');
-        video.play();
+        //reproducir();
 
     }
 
