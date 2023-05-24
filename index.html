@@ -2,7 +2,6 @@
 <html>
 <head>
     <style>
-        /* Estilos CSS existentes */
         @font-face {
             font-family: Grinched;
             src: url('Amongus-3zjxX.ttf') format('opentype');
@@ -59,74 +58,73 @@
             }
         }
 
-        /* Estilos para el popup */
-        .popup {
+        /* Estilos del popup */
+        .popup-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            display: none;
-            justify-content: center;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
             align-items: center;
+            justify-content: center;
             z-index: 9999;
         }
 
-        .video-container {
+        .popup-content {
             position: relative;
-            max-width: 80%;
-            max-height: 80%;
-            width: auto;
-            height: auto;
+            width: 80%;
+            max-width: 800px;
             padding: 20px;
             background-color: #fff;
+            border-radius: 5px;
+            text-align: center;
         }
 
-        .close-btn {
+        .popup-close {
             position: absolute;
-            top: 10px;
-            right: 10px;
-            font-size: 20px;
+            top: -2px;
+            right: 6px;
+            font-size: 24px;
+            color: #1d2adc;
             cursor: pointer;
+        }
+
+        .popup-video {
+            width: 100%;
+            height: auto;
         }
     </style>
 </head>
 <body>
-<!-- Popup -->
-<div id="popup" class="popup">
-    <div class="video-container">
-        <video id="myVideo" controls autoplay>
-            <source src="fiestaSaid.mp4" type="video/mp4">
-        </video>
-        <span class="close-btn" onclick="closePopup()">&times;</span>
-    </div>
-</div>
-
-<!-- Contenido principal -->
 <div class="container">
-    <!-- Resto del contenido -->
     <br/>
-    <p class="text-yellow text-center"><span class="title-text red-text">¡FiestA de CUMPLE de Arturo SAID - Número 8: Misión Among Us!</span>
+    <p class="text-yellow text-center">
+        <span class="title-text red-text">¡FiestA de CUMPLE de Arturo SAID - Número 8: Misión Among Us!</span>
     </p>
     <p class="text-celeste text-center">FECHA</p>
     <p class="text-yellow text-center">15 de Julio de 2023</p>
     <br>
     <p class="text-celeste text-center">HorArio</p>
-    <p class="text-yellow text-center"> 10:00 a 15:00</p>∫
+    <p class="text-yellow text-center">10:00 a 15:00</p>
     <br>
-    <p class="text-celeste text-center">!ConfirmA tu AsistenciA!</p>
-    <p class="text-yellow text-center" style="font-size:25px"><b>¡Haz click aquí! ---></b> <a
-            href="https://api.whatsapp.com/send/?phone=5531458937&text=Buenas+tardes%2C+confirmo+asistencia+a+la+super+fiesta+de+Arturo+Said.+%C2%A1Estoy+emocionad%40+de+celebrar+juntos%21&type=custom_url&app_absent=0"
-            target="_blank" style="padding-left: 5px"><img src="whatsapp-logo-4454.svg" alt="WhatsApp Icon" width="30"
-                                                           height="30" style="padding-left: 5px"> <span
-            style="color: #61ff6a">55 3145 8937</span> </a><- </p>
+    <p class="text-celeste text-center">¡ConfirmA tu AsistenciA!</p>
+    <p class="text-yellow text-center" style="font-size:25px">
+        <b>¡Haz click aquí! ---></b>
+        <a href="https://api.whatsapp.com/send/?phone=5531458937&text=Buenas+tardes%2C+confirmo+asistencia+a+la+super+fiesta+de+Arturo+Said.+%C2%A1Estoy+emocionad%40+de+celebrar+juntos%21&type=custom_url&app_absent=0" target="_blank" style="padding-left: 5px">
+            <img src="whatsapp-logo-4454.svg" alt="WhatsApp Icon" width="30" height="30" style="padding-left: 5px">
+            <span style="color: #61ff6a">55 3145 8937</span>
+        </a><-
+    </p>
     <br>
     <p class="text-celeste text-center">UbicAción</p>
     <p class="text-yellow text-center">SALON cAnicAs, TecpAn 3, San Francisco Tetecala, Azcapotzalco, 02730 Ciudad de México, CDMX</p>
-    <p class="text-yellow text-center"><a style="color:#61ff6a"
-                                          href="https://www.google.com/maps/place/SALON+CANICAS/@19.4813213,-99.1910696,17z/data=!3m1!4b1!4m6!3m5!1s0x85d1f87f73adff1d:0x2676a9c29ddd0450!8m2!3d19.4813213!4d-99.1888809!16s%2Fg%2F11ckz8hvd5"
-                                          target="_blank">Ver en Google Maps</a></p>
+    <p class="text-yellow text-center">
+        <a style="color:#61ff6a" href="https://www.google.com/maps/place/SALON+CANICAS/@19.4813213,-99.1910696,17z/data=!3m1!4b1!4m6!3m5!1s0x85d1f87f73adff1d:0x2676a9c29ddd0450!8m2!3d19.4813213!4d-99.1888809!16s%2Fg%2F11ckz8hvd5" target="_blank">
+            Ver en Google Maps
+        </a>
+    </p>
     <br>
     <p class="text-celeste text-center">DetAlles</p>
     <p class="text-yellow text-center">Tendremos juegos inflAbles, brincolines, desAyuno, pAstel y piniAtA.</p>
@@ -142,29 +140,41 @@
     <br/>
     <br/>
     <br/>
+
+</div>
+
+<!-- Popup -->
+<div class="popup-overlay">
+    <div class="popup-content">
+        <span class="popup-close" onclick="closePopup()">&times;</span>
+        <video class="popup-video" autoplay controls>
+            <source src="fiestaSaid.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
 </div>
 
 <script>
-    // Función para abrir el popup y reproducir el video
-    function openPopup() {
-        var popup = document.getElementById("popup");
-        popup.style.display = "flex";
-        var video = document.getElementById("myVideo");
-        video.play();
-    }
-
-    // Función para cerrar el popup y detener el video
-    function closePopup() {
-        var popup = document.getElementById("popup");
-        popup.style.display = "none";
-        var video = document.getElementById("myVideo");
-        video.pause();
-    }
-
-    // Abrir el popup al cargar la página
+    // Función para abrir el popup al cargar la página
     window.onload = function() {
         openPopup();
-    };
+    }
+
+    // Función para abrir el popup
+    function openPopup() {
+        document.querySelector('.popup-overlay').style.display = 'flex';
+    }
+
+    // Función para cerrar el popup
+    function closePopup() {
+        var popup = document.querySelector('.popup-overlay');
+        var video = document.querySelector('.popup-video');
+
+        popup.style.display = 'none';
+        video.pause();
+        video.currentTime = 0;
+    }
 </script>
+
 </body>
 </html>
